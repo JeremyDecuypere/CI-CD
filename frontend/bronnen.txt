@@ -1,0 +1,32 @@
+-- Voor een card item
+https://mui.com/material-ui/api/card/
+https://mui.com/material-ui/react-card/
+Install material node_modules
+npm install @mui/material @emotion/react @emotion/styled
+
+-- Touchableopacity (ter vervanging van Card, want card is niet compatibel met react native)
+https://reactnative.dev/docs/touchableopacity
+
+--navigation
+https://reactnavigation.org/docs/tab-based-navigation/
+https://reactnavigation.org/docs/customizing-tabbar/
+https://stackoverflow.com/questions/75473842/cannot-install-react-native-vector-icons-ionicons-in-visual-studio-code
+https://ionic.io/ionicons
+https://reactnavigation.org/docs/bottom-tab-navigator/
+
+--splash screen documentatie
+https://blog.logrocket.com/building-splash-screens-react-native/
+https://www.effectussoftware.com/blog/react-native-splash-screen
+https://chatgpt.com
+
+--modal (pop up) documentatie
+https://blog.logrocket.com/creating-a-pop-up-modal-in-react-native/
+https://reactnative.dev/docs/modal
+
+--Appearance
+https://reactnative.dev/docs/appearance
+https://ibjects.medium.com/dark-light-theme-in-react-native-app-c849c2eb691f
+https://medium.com/simform-engineering/manage-dark-mode-in-react-native-application-2a04ba7e76d0
+
+--Switch
+https://www.npmjs.com/package/react-native-switch-toggle
