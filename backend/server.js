@@ -8,7 +8,7 @@ app.use(cors())
 const port = process.env.PORT || 3000 
 
 function connectDB(){
-mongoose.connect('mongodb://127.0.0.1:27017/test')
+mongoose.connect('mongodb://mongodb:27017/test')
     .then(() => console.log('Connected to MongoDB!'))
     .catch(err => console.error("Error connecting to DB :", err))
 }
