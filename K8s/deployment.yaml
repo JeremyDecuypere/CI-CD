@@ -16,11 +16,13 @@ spec:
     spec:
       containers:
       - name: backend
-        image: assignment-docker-and-cloud-computing-jeremydecuypere-backend
+        image: assignment-docker-and-cloud-computing-jeremydecuypere-backend:latest
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000 
       - name: frontend
-        image: assignment-docker-and-cloud-computing-jeremydecuypere-frontend
+        image: assignment-docker-and-cloud-computing-jeremydecuypere-frontend:latest
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80 
       - name: database
