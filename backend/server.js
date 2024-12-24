@@ -6,12 +6,14 @@ app.use(express.json())
 app.use(cors())
 
 const port = process.env.PORT || 3000 
-
+const url = 'mongodb://mongodb:27017/test'
+console.log(url.toString())
 function connectDB(){
-mongoose.connect('mongodb://mongodb:27017/test')
+mongoose.connect(url)
     .then(() => console.log('Connected to MongoDB!'))
     .catch(err => console.error("Error connecting to DB :", err))
 }
+
 // TimeOut for docker-compose to give mongo container time to start up
 setTimeout(connectDB,3000)
 
@@ -32,7 +34,7 @@ async function seedFoods() {
     { name: "Banana", color: "Yellow" },
     { name: "Grapes", color: "Purple" },
     { name: "Orange", color: "Orange" },
-    { name: "Lettuce", color: "Green" },
+    { name: "Madara", color: "Uchiha" },
   ];
 
   try {
@@ -54,12 +56,14 @@ seedFoods();
 
 app.get("/", async (req, res) => {
   try {
-    const foods = await Food.find();
-    res.send(foods);
+    const foods = await Food.find(); 
+    res.status(200).json(foods);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching foods", error });
+    console.error("Error in / route:", error.message);
+    res.status(500).json({ message: "Internal Server Error", error: error.message });
   }
 });
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
