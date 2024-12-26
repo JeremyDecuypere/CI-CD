@@ -1,0 +1,28 @@
+replicas: 1
+
+backend:
+  image:
+    repository: jeremydecuypere/backend
+    tag: latest
+  port: 3000
+
+frontend:
+  image:
+    repository: jeremydecuypere/frontend
+    tag: latest
+  port: 80
+
+mongodb:
+  image:
+    repository: jeremydecuypere/mongo
+    tag: latest
+  port: 27017
+  storage: 1Gi
+
+ingress:
+  enabled: true
+  host: localhost
+
+config:
+  APP_ENV: production
+  APP_DEBUG: "false"
