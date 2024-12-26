@@ -21,7 +21,7 @@ spec:
         - containerPort: {{ .Values.backend.port }}
         env:
         - name: MONGO_URI
-          value: "mongodb://mongodb:{{ .Values.mongodb.port }}/test"
+          value: "mongodb://mongodb.helm-test.svc.cluster.local:{{ .Values.mongodb.port }}/test"
         - name: NODE_ENV
           valueFrom:
             configMapKeyRef:
@@ -52,3 +52,34 @@ spec:
         env:
         - name: BACKEND_URL
           value: "http://backend:{{ .Values.backend.port }}"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  namespace: helm-test
+  labels:
+    app: mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo:latest
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: mongodb-data
+          mountPath: /data/db
+      volumes:
+      - name: mongodb-data
+        persistentVolumeClaim:
+          claimName: mongo-pvc
