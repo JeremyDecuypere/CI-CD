@@ -21,7 +21,7 @@ spec:
         - containerPort: 3000
         env:
         - name: MONGO_URI
-          value: "mongodb://mongodb:27017/test"
+          value: "mongodb://mongodb.default.svc.cluster.local:27017/test"
         - name: NODE_ENV
           valueFrom:
             configMapKeyRef:
@@ -52,7 +52,7 @@ spec:
         - containerPort: 80
         env:
         - name: BACKEND_URL
-          value: http://127.0.0.1:3000
+          value: "http://localhost:3000/"
 
 ---
 apiVersion: apps/v1
