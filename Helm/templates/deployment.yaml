@@ -51,13 +51,13 @@ spec:
         - containerPort: {{ .Values.frontend.port }}
         env:
         - name: BACKEND_URL
-          value: "http://backend:{{ .Values.backend.port }}"
+          value: "http://127.0.0.1:{{ .Values.backend.port }}"
 
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mongodb
+  name: {{ .Release.Name }}-mongodb
   namespace: helm-test
   labels:
     app: mongodb

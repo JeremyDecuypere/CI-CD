@@ -1,4 +1,4 @@
-replicas: 3
+replicas: 1
 
 backend:
   image:
@@ -17,13 +17,13 @@ mongodb:
     repository: jeremydecuypere/mongo
     tag: latest
   port: 27017
-  storage: 5Gi
+  storage: 1Gi
 
 ingress:
   enabled: true
   host: localhost
 
 config:
-  APP_ENV: prod
+  APP_ENV: test
   APP_DEBUG: "true"
-  NAMESPACE: helm-prod
+  NAMESPACE: helm-test

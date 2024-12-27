@@ -51,7 +51,7 @@ spec:
         - containerPort: 80
         env:
         - name: BACKEND_URL
-          value: "34.78.217.169:3000"
+          value: "http://34.78.217.169:3000/"
 ---
 apiVersion: apps/v1
 kind: Deployment
