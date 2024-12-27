@@ -1,0 +1,35 @@
+alertmanager:
+  enabled: true
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+
+pushgateway:
+  enabled: false  
+
+nodeExporter:
+  enabled: false  
+
+kubeStateMetrics:
+  enabled: true
+  podSecurityPolicy:
+    enabled: false
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+
+server:
+  podSecurityPolicy:
+    enabled: false
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 1000
+  resources:
+    requests:
+      memory: "400Mi"
+      cpu: "200m"
+    limits:
+      memory: "800Mi"
+      cpu: "400m"
+  service:
+    type: LoadBalancer
