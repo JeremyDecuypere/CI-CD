@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: grafana
-  namespace: monitoring
+  namespace: default
   labels:
     app: grafana
 spec:
@@ -24,11 +24,11 @@ spec:
         - containerPort: 3000
         resources:
           requests:
-            memory: "500Mi"
-            cpu: "250m"
+            memory: "200Mi"
+            cpu: "100m"
           limits:
-            memory: "1Gi"
-            cpu: "500m"
+            memory: "500Mi"
+            cpu: "200m"
         env:
         - name: GF_SECURITY_ADMIN_USER
           valueFrom:

@@ -27,6 +27,13 @@ spec:
             configMapKeyRef:
               name: app-config
               key: APP_ENV
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -52,6 +59,13 @@ spec:
         env:
         - name: BACKEND_URL
           value: "http://34.78.217.169:3000/"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -77,6 +91,13 @@ spec:
         volumeMounts:
         - mountPath: /data/db
           name: mongo-persistent-storage
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "200m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
       volumes:
       - name: mongo-persistent-storage
         persistentVolumeClaim:
