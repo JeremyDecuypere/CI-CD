@@ -19,10 +19,6 @@ mongodb:
   port: 27017
   storage: 1Gi
 
-ingress:
-  enabled: true
-  host: localhost
-
 config:
   APP_ENV: test
   APP_DEBUG: "true"

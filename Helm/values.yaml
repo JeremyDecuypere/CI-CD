@@ -1,4 +1,4 @@
-replicas: 3
+replicas: 2
 
 backend:
   image:
@@ -19,11 +19,7 @@ mongodb:
   port: 27017
   storage: 5Gi
 
-ingress:
-  enabled: true
-  host: localhost
-
 config:
   APP_ENV: prod
-  APP_DEBUG: "true"
+  APP_DEBUG: "false"
   NAMESPACE: helm-prod

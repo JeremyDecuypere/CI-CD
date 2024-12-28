@@ -1,7 +1,9 @@
+# Backend Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Release.Name }}-backend
+  namespace: {{ .Values.config.NAMESPACE }}
   labels:
     app: backend
 spec:
@@ -19,19 +21,15 @@ spec:
         image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
         ports:
         - containerPort: {{ .Values.backend.port }}
-        env:
-        - name: MONGO_URI
-          value: "mongodb://mongodb.helm-test.svc.cluster.local:{{ .Values.mongodb.port }}/test"
-        - name: NODE_ENV
-          valueFrom:
-            configMapKeyRef:
-              name: {{ .Release.Name }}-config
-              key: APP_ENV
+        envFrom:
+        - configMapRef:
+            name: {{ .Release.Name }}-config
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Release.Name }}-frontend
+  namespace: {{ .Values.config.NAMESPACE }}
   labels:
     app: frontend
 spec:
@@ -49,16 +47,15 @@ spec:
         image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
         ports:
         - containerPort: {{ .Values.frontend.port }}
-        env:
-        - name: BACKEND_URL
-          value: "http://127.0.0.1:{{ .Values.backend.port }}"
-
+        envFrom:
+        - configMapRef:
+            name: {{ .Release.Name }}-config
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Release.Name }}-mongodb
-  namespace: helm-test
+  namespace: {{ .Values.config.NAMESPACE }}
   labels:
     app: mongodb
 spec:
@@ -73,13 +70,13 @@ spec:
     spec:
       containers:
       - name: mongodb
-        image: mongo:latest
+        image: "{{ .Values.mongodb.image.repository }}:{{ .Values.mongodb.image.tag }}"
         ports:
-        - containerPort: 27017
+        - containerPort: {{ .Values.mongodb.port }}
         volumeMounts:
         - name: mongodb-data
           mountPath: /data/db
       volumes:
       - name: mongodb-data
         persistentVolumeClaim:
-          claimName: mongo-pvc
+          claimName: mongo-pvc-{{ .Release.Name }}
