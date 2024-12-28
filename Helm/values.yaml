@@ -4,13 +4,16 @@ backend:
   image:
     repository: jeremydecuypere/backend
     tag: latest
-  port: 3000
+  port: 3003
+  listeningport: 3000
+  externalIP: 127.0.0.1
 
 frontend:
   image:
     repository: jeremydecuypere/frontend
     tag: latest
-  port: 80
+  port: 83
+  listeningport: 80
 
 mongodb:
   image:

@@ -9,7 +9,7 @@ spec:
   ports:
   - protocol: TCP
     port: {{ .Values.backend.port }}
-    targetPort: {{ .Values.backend.port }}
+    targetPort: {{ .Values.backend.listeningport }}
   type: LoadBalancer
 ---
 apiVersion: v1
@@ -23,13 +23,13 @@ spec:
   ports:
   - protocol: TCP
     port: {{ .Values.frontend.port }}
-    targetPort: {{ .Values.frontend.port }}
+    targetPort: {{ .Values.frontend.listeningport }}
   type: LoadBalancer
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mongodb-{{ .Release.Name }}
+  name: mongodb
   namespace: {{ .Values.config.NAMESPACE }}
 spec:
   selector:

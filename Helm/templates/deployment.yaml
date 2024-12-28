@@ -1,4 +1,3 @@
-# Backend Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -24,6 +23,9 @@ spec:
         envFrom:
         - configMapRef:
             name: {{ .Release.Name }}-config
+        env:
+        - name: MONGO_URI
+          value: "mongodb://mongodb:{{ .Values.mongodb.port }}/test"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -50,11 +52,15 @@ spec:
         envFrom:
         - configMapRef:
             name: {{ .Release.Name }}-config
+        env:
+        - name: BACKEND_URL
+          value: "http://{{ .Values.backend.externalIP }}:{{ .Values.backend.port }}"
+    
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Name }}-mongodb
+  name: mongodb
   namespace: {{ .Values.config.NAMESPACE }}
   labels:
     app: mongodb
