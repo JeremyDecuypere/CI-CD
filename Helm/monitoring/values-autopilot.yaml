@@ -5,10 +5,10 @@ alertmanager:
     runAsUser: 1000
 
 pushgateway:
-  enabled: false  
+  enabled: true  
 
 nodeExporter:
-  enabled: false  
+  enabled: true  
 
 kubeStateMetrics:
   enabled: true
@@ -19,6 +19,9 @@ kubeStateMetrics:
     runAsUser: 1000
 
 server:
+  server:
+  extraArgs:
+    --web.enable-lifecycle: ""
   podSecurityPolicy:
     enabled: false
   securityContext:
