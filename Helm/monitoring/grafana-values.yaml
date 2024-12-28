@@ -1,0 +1,23 @@
+service:
+  type: LoadBalancer  
+
+resources:
+  requests:
+    memory: "200Mi"
+    cpu: "100m"
+  limits:
+    memory: "400Mi"
+    cpu: "200m"
+
+admin:
+  existingSecret: ""  
+
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+    - name: Prometheus
+      type: prometheus
+      access: proxy
+      url: http://prometheus-server.default.svc.cluster.local
+      isDefault: true

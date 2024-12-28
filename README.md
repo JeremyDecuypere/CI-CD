@@ -3,7 +3,7 @@ Dit is een starter voor jullie assignment
 
 Deployde backend: http://34.78.217.169:3000/
 Deployde frontend: http://104.199.20.209/
-Prometheus: http://35.205.5.100:9090/query
+Prometheus: http://35.205.5.70/targets
 Grafana: http://34.140.201.65/login
 --> Grafana username: admin
---> Grafana passwoord: dPj4az2lTp5IUapnSX7jyL8BIbdDeUv7wjAhJYUx
+--> Grafana passwoord: lQoYcpvkz6ftzSYehfx5U4vfTqN2yuDn4zPSA9Hi

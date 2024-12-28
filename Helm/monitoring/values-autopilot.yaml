@@ -33,3 +33,5 @@ server:
       cpu: "400m"
   service:
     type: LoadBalancer
+
+additionalScrapeConfigs: []

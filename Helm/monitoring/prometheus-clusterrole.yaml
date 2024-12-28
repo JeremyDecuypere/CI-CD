@@ -1,27 +1,21 @@
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: prometheus
-  namespace: default
----
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: prometheus
 rules:
 - apiGroups: [""]
-  resources: ["pods", "nodes", "services", "endpoints"]
+  resources: ["nodes/metrics", "nodes/proxy"]
   verbs: ["get", "list", "watch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: prometheus-cluster-role-binding
+  name: prometheus
 subjects:
 - kind: ServiceAccount
   name: prometheus
   namespace: default
 roleRef:
   kind: ClusterRole
-  name: prometheus-cluster-role
+  name: prometheus
   apiGroup: rbac.authorization.k8s.io
