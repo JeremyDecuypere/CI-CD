@@ -26,7 +26,3 @@ jobs:
         docker build -t ${{ secrets.DOCKER_REPO_BACKEND }}:latest ./backend
         docker push ${{ secrets.DOCKER_REPO_BACKEND }}:latest
 
-    - name: Build and Push Mongo Image
-      run: |
-        docker build -t ${{ secrets.DOCKER_REPO_MONGO }}:latest ./mongo
-        docker push ${{ secrets.DOCKER_REPO_MONGO }}:latest
