@@ -1,0 +1,32 @@
+name: Update Docker Hub Images
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Log in to Docker Hub
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+    - name: Build and Push Frontend Image
+      run: |
+        docker build -t ${{ secrets.DOCKER_REPO_FRONTEND }}:latest ./frontend
+        docker push ${{ secrets.DOCKER_REPO_FRONTEND }}:latest
+
+    - name: Build and Push Backend Image
+      run: |
+        docker build -t ${{ secrets.DOCKER_REPO_BACKEND }}:latest ./backend
+        docker push ${{ secrets.DOCKER_REPO_BACKEND }}:latest
+
+    - name: Build and Push Mongo Image
+      run: |
+        docker build -t ${{ secrets.DOCKER_REPO_MONGO }}:latest ./mongo
+        docker push ${{ secrets.DOCKER_REPO_MONGO }}:latest

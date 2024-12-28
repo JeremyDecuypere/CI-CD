@@ -9,3 +9,4 @@ Grafana: http://34.77.194.252/login
 --> Grafana username: admin
 --> Grafana passwoord: lQoYcpvkz6ftzSYehfx5U4vfTqN2yuDn4zPSA9Hi
 CI/CD push test
+docker hub PAT: dckr_pat_Im3-CHL4vjXl-8xOEuRc9baFsDQ
