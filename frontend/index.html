@@ -6,29 +6,35 @@
   <title>Dynamic Backend URL</title>
 </head>
 <body>
-
-  <p>List of foods from API: </p>
-
+  <p>List of foods from API:</p>
   <ul id="list"></ul>
-    
+  <h1 id="environment"></h1> <!-- H1 to display environment -->
+
 </body>
 </html>
+
 <script src="env-config.js"></script>
 <script type="text/javascript">
 let li, ul;
 
 async function createList() {
-  const url = window.BACKEND_URL
+  const url = window.BACKEND_URL;
   console.log("Backend URL:", url);
-  console.log("CI/CD toegevoed")
-  const environment = 'default'
-  if(url.slice(-1) === '3'){
-    environment = 'production'
+  console.log("CI/CD toegevoed");
+  var environment = 'default';
+
+
+  if (url.slice(-1) === '3') {
+    environment = 'production';
   }
-  if(url.slice(-1) === '2'){
-    environment = 'test'
+  if (url.slice(-1) === '2') {
+    environment = 'test';
   }
-  console.log('App runt in volgende environment', environment)
+  console.log('App runt in volgende environment', environment);
+
+  const environmentElement = document.getElementById("environment");
+  environmentElement.textContent = `Current Environment: ${environment}`;
+
   try {
     const response = await fetch(url);
     if (!response.ok) {
