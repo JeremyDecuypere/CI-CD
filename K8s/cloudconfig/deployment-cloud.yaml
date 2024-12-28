@@ -24,7 +24,7 @@ spec:
         - containerPort: 3000
         env:
         - name: MONGO_URI
-          value: "mongodb://mongodb.default.svc.cluster.local:27017/test"
+          value: "mongodb://mongodb:27017/test"
         - name: NODE_ENV
           valueFrom:
             configMapKeyRef:

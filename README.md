@@ -8,5 +8,4 @@ Prometheus: http://35.205.5.70/targets
 Grafana: http://34.77.194.252/login
 --> Grafana username: admin
 --> Grafana passwoord: lQoYcpvkz6ftzSYehfx5U4vfTqN2yuDn4zPSA9Hi
-CI/CD push test
-docker hub PAT: dckr_pat_Im3-CHL4vjXl-8xOEuRc9baFsDQ
+docker hub PAT: ZGNrcl9wYXRfSW0zLUNITDR2alhsLTh4T0V1UmM5YmFGc0RR
