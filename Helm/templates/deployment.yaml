@@ -20,6 +20,13 @@ spec:
         image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
         ports:
         - containerPort: {{ .Values.backend.port }}
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 200m
+            memory: 512Mi
         envFrom:
         - configMapRef:
             name: {{ .Release.Name }}-config
@@ -49,13 +56,19 @@ spec:
         image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
         ports:
         - containerPort: {{ .Values.frontend.port }}
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 200m
+            memory: 512Mi
         envFrom:
         - configMapRef:
             name: {{ .Release.Name }}-config
         env:
         - name: BACKEND_URL
           value: "http://{{ .Values.backend.externalIP }}:{{ .Values.backend.port }}"
-    
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -79,6 +92,13 @@ spec:
         image: "{{ .Values.mongodb.image.repository }}:{{ .Values.mongodb.image.tag }}"
         ports:
         - containerPort: {{ .Values.mongodb.port }}
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 200m
+            memory: 512Mi
         volumeMounts:
         - name: mongodb-data
           mountPath: /data/db

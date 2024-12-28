@@ -1,0 +1,28 @@
+replicas: 2
+
+backend:
+  image:
+    repository: jeremydecuypere/backend
+    tag: latest
+  port: 3003
+  listeningport: 3000
+  externalIP: 35.240.20.50
+
+frontend:
+  image:
+    repository: jeremydecuypere/frontend
+    tag: latest
+  port: 83
+  listeningport: 80
+
+mongodb:
+  image:
+    repository: jeremydecuypere/mongo
+    tag: latest
+  port: 27017
+  storage: 5Gi
+
+config:
+  APP_ENV: prod
+  APP_DEBUG: "false"
+  NAMESPACE: helm-prod

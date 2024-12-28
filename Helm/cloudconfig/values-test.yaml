@@ -1,0 +1,28 @@
+replicas: 1
+
+backend:
+  image:
+    repository: jeremydecuypere/backend
+    tag: latest
+  port: 3002
+  listeningport: 3000
+  externalIP: 34.78.88.66
+
+frontend:
+  image:
+    repository: jeremydecuypere/frontend
+    tag: latest
+  port: 82
+  listeningport: 80
+
+mongodb:
+  image:
+    repository: jeremydecuypere/mongo
+    tag: latest
+  port: 27017
+  storage: 1Gi
+
+config:
+  APP_ENV: test
+  APP_DEBUG: "true"
+  NAMESPACE: helm-test
