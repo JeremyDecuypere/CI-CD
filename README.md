@@ -8,3 +8,4 @@ Prometheus: http://35.205.5.70/targets
 Grafana: http://34.77.194.252/login
 --> Grafana username: admin
 --> Grafana passwoord: lQoYcpvkz6ftzSYehfx5U4vfTqN2yuDn4zPSA9Hi
+CI/CD push test
