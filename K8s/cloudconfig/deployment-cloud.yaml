@@ -13,6 +13,9 @@ spec:
     metadata:
       labels:
         app: backend
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "3000"
     spec:
       containers:
       - name: backend
@@ -50,6 +53,9 @@ spec:
     metadata:
       labels:
         app: frontend
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "80"
     spec:
       containers:
       - name: frontend
@@ -82,6 +88,9 @@ spec:
     metadata:
       labels:
         app: mongodb
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "27017"
     spec:
       containers:
       - name: mongodb
