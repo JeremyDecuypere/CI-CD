@@ -7,5 +7,5 @@ Deployde (HELM ENVIRONMENT=helm-prod) frontend: http://34.79.68.231:83/
 Prometheus: http://34.78.39.193/
 Grafana: http://34.77.99.58/login
 --> Grafana username: admin
---> Grafana passwoord: Y3gzM3hwREROYngzczlWdTZyalZMNFJWQm5LYWVxVXR4QzZwQXVNbw==
+--> Grafana passwoord: cx33xpDDNbx3s9Vu6rVL4RVBnKaeqUtxC6pAuMo
 
