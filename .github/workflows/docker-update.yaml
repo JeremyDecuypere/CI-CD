@@ -33,10 +33,11 @@ jobs:
 
     - name: Authenticate Google Cloud CLI
       run: |
-        echo "${{ secrets.GKE_CREDENTIALS }}" > key.json
         gcloud auth activate-service-account --key-file=key.json
-        gcloud config set account $(echo "${{ secrets.GKE_CREDENTIALS }}" | jq -r '.client_email')
-        gcloud config set project $(echo "${{ secrets.GKE_CREDENTIALS }}" | jq -r '.project_id')
+        gcloud config set account $(jq -r '.client_email' key.json)
+        gcloud config set project $(jq -r '.project_id' key.json)
+      working-directory: ./  
+
 
 
     - name: Trigger Google Cloud Deploy
