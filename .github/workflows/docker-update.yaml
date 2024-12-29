@@ -31,12 +31,17 @@ jobs:
       with:
         credentials_json: ${{ secrets.GKE_CREDENTIALS }}
 
-    - name: Authenticate Google Cloud CLI
-      run: |
-        gcloud auth activate-service-account --key-file=key.json
-        gcloud config set account $(jq -r '.client_email' key.json)
-        gcloud config set project $(jq -r '.project_id' key.json)
-      working-directory: ./  
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v1
+      with:
+        credentials_json: '${{ secrets.GKE_CREDENTIALS }}'
+
+    - name: Set up gcloud CLI
+      uses: google-github-actions/setup-gcloud@v1
+      with:
+        project_id: 'kubernetesdeployment-446213'
+        install_components: 'kubectl'
+
 
 
 
