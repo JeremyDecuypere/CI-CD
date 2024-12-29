@@ -32,11 +32,11 @@ spec:
               key: APP_ENV
         resources:
           requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
             memory: "128Mi"
             cpu: "100m"
-          limits:
-            memory: "256Mi"
-            cpu: "200m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -64,14 +64,14 @@ spec:
         - containerPort: 80
         env:
         - name: BACKEND_URL
-          value: "http://34.78.217.169:3000/"
+          value: "http://34.38.253.22:3000/"
         resources:
           requests:
+            memory: "64Mi"
+            cpu: "50m"
+          limits:
             memory: "128Mi"
             cpu: "100m"
-          limits:
-            memory: "256Mi"
-            cpu: "200m"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -102,11 +102,11 @@ spec:
           name: mongo-persistent-storage
         resources:
           requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
             memory: "256Mi"
             cpu: "200m"
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
       volumes:
       - name: mongo-persistent-storage
         persistentVolumeClaim:

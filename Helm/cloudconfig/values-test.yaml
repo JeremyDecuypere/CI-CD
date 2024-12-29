@@ -6,7 +6,7 @@ backend:
     tag: latest
   port: 3002
   listeningport: 3000
-  externalIP: 34.78.88.66
+  externalIP: 34.38.23.11
 
 frontend:
   image:
