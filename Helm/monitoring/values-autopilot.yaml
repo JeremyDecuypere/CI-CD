@@ -20,8 +20,6 @@ kubeStateMetrics:
 
 server:
   server:
-  extraArgs:
-    --web.enable-lifecycle: ""
   podSecurityPolicy:
     enabled: false
   securityContext:
