@@ -42,7 +42,7 @@ jobs:
         project_id: 'kubernetesdeployment-446213'
         install_components: 'kubectl'
 
-   - name: Configure kubectl
+    - name: Configure kubectl
       run: |
         gcloud container clusters get-credentials cloudminikube --region=europe-west1 --project=kubernetesdeployment-446213
 
