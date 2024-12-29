@@ -8,4 +8,4 @@ Prometheus: http://34.78.39.193/
 Grafana: http://34.77.99.58/login
 --> Grafana username: admin
 --> Grafana passwoord: Y3gzM3hwREROYngzczlWdTZyalZMNFJWQm5LYWVxVXR4QzZwQXVNbw==
-docker hub PAT: ZGNrcl9wYXRfSW0zLUNITDR2alhsLTh4T0V1UmM5YmFGc0RR
+
