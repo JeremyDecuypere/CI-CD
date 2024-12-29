@@ -33,9 +33,11 @@ jobs:
 
     - name: Authenticate Google Cloud CLI
       run: |
-        gcloud auth activate-service-account --key-file=/github/workspace/${{ secrets.GKE_CREDENTIALS }}
-        gcloud config set account ${{ secrets.GCP_ACCOUNT_EMAIL }}
-        gcloud config set project kubernetesdeployment-446213
+        echo "${{ secrets.GKE_CREDENTIALS }}" > key.json
+        gcloud auth activate-service-account --key-file=key.json
+        gcloud config set account $(echo "${{ secrets.GKE_CREDENTIALS }}" | jq -r '.client_email')
+        gcloud config set project $(echo "${{ secrets.GKE_CREDENTIALS }}" | jq -r '.project_id')
+
 
     - name: Trigger Google Cloud Deploy
       run: |
