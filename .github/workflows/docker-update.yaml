@@ -20,11 +20,16 @@ jobs:
       run: |
         docker build -t ${{ secrets.DOCKER_REPO_FRONTEND }}:latest ./frontend
         docker push ${{ secrets.DOCKER_REPO_FRONTEND }}:latest
+        docker build -t ${{ secrets.DOCKER_REPO_FRONTEND }}:${{ github.sha }} ./frontend
+        docker push ${{ secrets.DOCKER_REPO_FRONTEND }}:${{ github.sha }}
+        
 
     - name: Build and Push Backend Image
       run: |
         docker build -t ${{ secrets.DOCKER_REPO_BACKEND }}:latest ./backend
         docker push ${{ secrets.DOCKER_REPO_BACKEND }}:latest
+        docker build -t ${{ secrets.DOCKER_REPO_BACKEND }}:${{ github.sha }} ./backend
+        docker push ${{ secrets.DOCKER_REPO_BACKEND }}:${{ github.sha }}
 
     - name: Set up Google Cloud SDK
       uses: google-github-actions/setup-gcloud@v1
@@ -50,6 +55,9 @@ jobs:
       run: |
         kubectl set image deployment.apps/test-release-frontend frontend=${{ secrets.DOCKER_REPO_FRONTEND }}:latest -n helm-test
         kubectl set image deployment.apps/test-release-backend backend=${{ secrets.DOCKER_REPO_BACKEND }}:latest -n helm-test
+        kubectl set image deployment.apps/test-release-frontend frontend=${{ secrets.DOCKER_REPO_FRONTEND }}:${{ github.sha }} -n helm-test
+        kubectl set image deployment.apps/test-release-backend backend=${{ secrets.DOCKER_REPO_BACKEND }}:${{ github.sha }} -n helm-test
+
 
     - name: Restart pods
       run: |

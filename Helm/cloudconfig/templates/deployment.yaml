@@ -18,6 +18,7 @@ spec:
       containers:
       - name: backend
         image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
+        imagePullPolicy: Always
         ports:
         - containerPort: {{ .Values.backend.port }}
         resources:
@@ -56,6 +57,7 @@ spec:
       containers:
       - name: frontend
         image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}"
+        imagePullPolicy: Always
         ports:
         - containerPort: {{ .Values.frontend.port }}
         resources:
