@@ -9,7 +9,7 @@
   <p>List of foods from API:</p>
   <ul id="list"></ul>
   <h1 id="environment"></h1> 
-  <h4> Hey! ik zou normaal gezien alleen maar toegevoegd moeten worden op de frontend site van de test omgeving en dit dankzij continuous development</h4>
+  <h4 id="toDisplay"></h4>
 </body>
 </html>
 
@@ -22,13 +22,13 @@ async function createList() {
   console.log("Backend URL:", url);
   console.log("CI/CD toegevoed");
   var environment = 'default';
-
-
+  var toDisplay = ''
   if (url.slice(-1) === '3') {
     environment = 'production';
   }
   if (url.slice(-1) === '2') {
     environment = 'test';
+    toDisplay = 'Hey! ik zou normaal gezien alleen maar toegevoegd moeten worden op de frontend site van de test omgeving en dit dankzij continuous development'
   }
   console.log('App runt in volgende environment', environment);
 
