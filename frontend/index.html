@@ -9,6 +9,7 @@
   <p>List of foods from API:</p>
   <ul id="list"></ul>
   <h1 id="environment"></h1> 
+  <h4 id="env">To verify environment, check console.</h4>
 </body>
 </html>
 
@@ -34,6 +35,9 @@ async function createList() {
 
   const environmentElement = document.getElementById("environment");
   environmentElement.textContent = `Current Environment: ${environment}`;
+
+  const envElement = document.getElementById("env");
+  envElement.textContent = `Environment: ${environment}`;
 
   try {
     const response = await fetch(url);
