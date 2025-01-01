@@ -8,7 +8,7 @@
 <body>
   <p>List of foods from API:</p>
   <ul id="list"></ul>
-  <h1 id="environment"></h1> 
+  <h1 id="env"></h1> 
 </body>
 </html>
 
@@ -24,7 +24,7 @@ async function createList() {
   console.log("CI/CD toegevoegd");
  
   const envElement = document.getElementById("env");
-  envElement.textContent = `Welkom op de testpagina dit werd toegevoegd via CI/CD`;
+  envElement.textContent = `Welkom op de testpagina dit werd toegevoegd via CI/CD:`;
 
   try {
     const response = await fetch(url);
