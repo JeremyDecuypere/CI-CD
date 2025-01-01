@@ -64,7 +64,7 @@ spec:
         - containerPort: 80
         env:
         - name: BACKEND_URL
-          value: "http://34.38.253.22:3000/"
+          value: "http://130.211.107.158:3000/"
         resources:
           requests:
             memory: "64Mi"

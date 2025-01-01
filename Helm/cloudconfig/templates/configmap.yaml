@@ -4,5 +4,5 @@ metadata:
   name: {{ .Release.Name }}-config
   namespace: {{ .Values.config.NAMESPACE }}
 data:
-  APP_ENV: "{{ .Values.config.APP_ENV }}"
-  APP_DEBUG: "{{ .Values.config.APP_DEBUG }}"
+  APP_ENV: {{ .Values.config.APP_ENV }}
+  APP_DEBUG: {{ .Values.config.APP_DEBUG }}
