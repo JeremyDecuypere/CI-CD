@@ -33,6 +33,8 @@ spec:
         env:
         - name: MONGO_URI
           value: "mongodb://mongodb.{{ .Values.config.NAMESPACE }}.svc.cluster.local:{{ .Values.mongodb.port }}/test"
+        - name: APP_ENV
+          value: {{ .Values.config.APP_ENV }}
 ---
 apiVersion: apps/v1
 kind: Deployment
