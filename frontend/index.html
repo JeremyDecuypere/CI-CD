@@ -28,12 +28,15 @@ async function createList() {
   }
   if (url.slice(-1) === '2') {
     environment = 'test';
-    toDisplay = 'Hey! ik zou normaal gezien alleen maar toegevoegd moeten worden op de frontend site van de test omgeving en dit dankzij continuous development'
+    toDisplay = 'Hey! ik zou normaal gezien alleen maar toegevoegd moeten worden op de frontend site van de test omgeving en dit dankzij continuous development';
   }
   console.log('App runt in volgende environment', environment);
 
   const environmentElement = document.getElementById("environment");
   environmentElement.textContent = `Current Environment: ${environment}`;
+
+  const customElement = document.getElementById("toDisplay");
+  environmentElement.textContent = `${toDisplay}`;
 
   try {
     const response = await fetch(url);
